@@ -1,0 +1,23 @@
+{
+    "allowed_formats": {
+        "jpeg": ["jpg", "png", "webp", "ico", "pdf", "bmp"],
+        "jpg": ["png", "webp", "ico", "pdf", "bmp"],
+        "png": ["jpg", "webp", "ico", "pdf", "bmp"],
+        "bmp": ["jpg", "png", "webp", "ico", "pdf"],
+        "webp": ["jpg", "png", "bmp"]
+    },
+    "quality_formats": {
+        "jpg": {
+            "defaultQuality": 75,
+            "maxQuality": 100
+        },
+        "webp": {
+            "defaultQuality": 75,
+            "maxQuality": 100
+        },
+        "png": {
+            "defaultQuality": 9,
+            "maxQuality": 9
+        }
+    }
+}

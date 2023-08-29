@@ -1,0 +1,11 @@
+version: "3"
+name: conversionsite
+services:
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: php-app
+    ports:
+      - "8080:80"
