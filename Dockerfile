@@ -20,6 +20,9 @@ RUN curl -LO https://imagemagick.org/archive/ImageMagick-7.1.1-15.tar.gz && \
 # Install Imagick PHP extension linked to ImageMagick
 RUN pecl install imagick-3.7.0 && docker-php-ext-enable imagick
 
+# Change upload file size limit
+RUN echo "upload_max_filesize = 50M" > /usr/local/etc/php/conf.d/upload_max_filesize.ini
+
 # Enable the Zip extension
 RUN docker-php-ext-install zip
 

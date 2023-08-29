@@ -14,10 +14,6 @@
         "webp": {
             "defaultQuality": 75,
             "maxQuality": 100
-        },
-        "png": {
-            "defaultQuality": 9,
-            "maxQuality": 9
         }
     }
 }

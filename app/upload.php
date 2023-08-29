@@ -49,12 +49,17 @@ function handleFileConversion() {
 
         $quality = false;
         if (in_array($format, $quality_formats)) {
-            $quality = checkIntIsInRange($_POST["quality-{$key}"], 0, $format === "png" ? 9 : 100);
+            $quality = checkIntIsInRange($_POST["quality-{$key}"], 0, 100);
         }
 
         $new_file = convertFile($tmp_name, $format, $quality, $key);
 
         if ($multiple_files) {
+            $i = 1;
+            while ($zip->statName($new_file[1])) {
+                $new_file[1] = pathinfo($_FILES["images"]["name"][$key], PATHINFO_FILENAME) . " ($i).$format";
+                $i++;
+            }
             $zip->addFromString($new_file[1], (string)$new_file[0]);
         }
         else {
@@ -123,7 +128,7 @@ function convertFile($file, $format, $quality, $key) {
  * @return int The checked value or the maximum value if the value is not an integer or if it is not between the two values.
  */
 function checkIntIsInRange($int, $min, $max) {
-    if (!is_int($int) || $int < $min || $int > $max) {
+    if (!filter_var($int, FILTER_VALIDATE_INT) || $int < $min || $int > $max) {
         return $max;
     }
     return $int;
